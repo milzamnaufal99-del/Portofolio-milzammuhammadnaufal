@@ -1,0 +1,141 @@
+/* ============================================================
+   base.css
+   Global base styles built on top of reset.css.
+   All color, font, and spacing values come from design
+   tokens defined in variables.css.
+   ============================================================ */
+
+/* ── Smooth scrolling ────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Body ────────────────────────────────────────────────── */
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Custom scrollbar (WebKit) ───────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-accent) var(--color-bg-secondary);
+}
+
+/* ── Prevent horizontal overflow at all breakpoints ─────── */
+html,
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* ── Flex / Grid children — prevent overflow blowout ─────── */
+/*
+ * Applying min-width: 0 to all flex and grid children prevents
+ * the default min-width: auto from causing horizontal overflow.
+ * This covers both class-based containers and structural elements.
+ */
+.flex > *,
+.grid > *,
+[class*="flex"] > *,
+[class*="grid"] > *,
+[class*="__inner"] > *,
+[class*="__content"] > *,
+[class*="__layout"] > *,
+[class*="__container"] > *,
+[class*="__col"] > *,
+[class*="__column"] > * {
+  min-width: 0;
+}
+
+/* Explicit min-width: 0 for key structural flex/grid containers */
+.about__inner,
+.contact__layout,
+.projects__grid,
+.certificates__grid,
+.achievements__grid,
+.skills-group__grid,
+.timeline__list,
+.footer__container,
+.hero__ctas {
+  min-width: 0;
+}
+
+/* ── Links ───────────────────────────────────────────────── */
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Images ──────────────────────────────────────────────── */
+img,
+video {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* ── Lists ───────────────────────────────────────────────── */
+ul,
+ol {
+  list-style: none;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Shared section title ────────────────────────────────── */
+.section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}

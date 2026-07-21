@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Build
+dist/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*

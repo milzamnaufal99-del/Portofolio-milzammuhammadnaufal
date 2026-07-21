@@ -1,0 +1,289 @@
+/* ============================================================
+   Timeline Section — timeline.css
+   Vertical center-line layout with alternating left/right
+   items on desktop; collapses to single left-aligned column
+   on mobile (≤768px).
+   Relies on design tokens from variables.css and scroll-reveal
+   classes defined in animations.css.
+   ============================================================ */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+
+#timeline {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-bg-primary);
+}
+
+.timeline__container {
+  width: min(90%, 1100px);
+  margin-inline: auto;
+}
+
+/* ── Section heading ──────────────────────────────────────── */
+
+#timeline .section-title {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Timeline list wrapper — establishes the center line ──── */
+
+.timeline__list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  padding: var(--space-sm) 0;
+}
+
+/*
+ * Center vertical line drawn as a ::before pseudo-element.
+ * Positioned at 50% so items on both sides align to it.
+ */
+.timeline__list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--color-accent) 8%,
+    var(--color-accent) 92%,
+    transparent
+  );
+  z-index: var(--z-base);
+}
+
+/* ── Individual timeline item ─────────────────────────────── */
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding-bottom: var(--space-sm);
+}
+
+/*
+ * Connector dot on the center line.
+ * Each item places a dot via ::after, positioned absolutely
+ * to sit on the vertical line.
+ */
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  top: var(--space-md);
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  box-shadow: 0 0 8px var(--color-accent-glow);
+  z-index: var(--z-card);
+  transition: box-shadow var(--transition-normal);
+}
+
+.timeline-item:hover::after {
+  box-shadow: 0 0 18px var(--color-accent-glow);
+}
+
+/* ── Left item (even index: 0, 2, 4 …) ───────────────────── */
+
+.timeline-item--left {
+  align-self: flex-start;
+  padding-right: calc(var(--space-lg) + 14px);
+  text-align: right;
+}
+
+/* Dot sits at the right edge of the left item, on the center line */
+.timeline-item--left::after {
+  right: calc(-7px);
+}
+
+/* ── Right item (odd index: 1, 3, 5 …) ───────────────────── */
+
+.timeline-item--right {
+  align-self: flex-end;
+  padding-left: calc(var(--space-lg) + 14px);
+  text-align: left;
+}
+
+/* Dot sits at the left edge of the right item, on the center line */
+.timeline-item--right::after {
+  left: calc(-7px);
+}
+
+/* ── Content card (glassmorphism) ─────────────────────────── */
+
+.timeline-item__content {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md) var(--space-lg);
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal),
+    transform var(--transition-normal);
+}
+
+/* Glassmorphism blur where supported */
+@supports (backdrop-filter: blur(1px)) {
+  .timeline-item__content {
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+}
+
+/* Fallback for browsers without backdrop-filter */
+@supports not (backdrop-filter: blur(1px)) {
+  .timeline-item__content {
+    background: var(--color-bg-card);
+  }
+}
+
+.timeline-item__content:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 24px var(--color-accent-glow);
+  transform: translateY(-3px);
+}
+
+/* ── Content inner elements ───────────────────────────────── */
+
+.timeline-item__year {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  font-weight: 700;
+  color: var(--color-accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-accent);
+  background-color: rgba(59, 130, 246, 0.08);
+}
+
+.timeline-item__title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin: var(--space-xs) 0;
+}
+
+.timeline-item__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* ── Scroll-reveal: directional slide-in overrides ───────── */
+
+/*
+ * The .animate-on-scroll base class (animations.css) sets
+ * opacity: 0 + translateY(24px) as the hidden state.
+ * For timeline items we override the transform so left items
+ * slide in from the left and right items from the right.
+ * When IntersectionObserver adds .is-visible the shared rule
+ * in animations.css (transform: none) reveals them cleanly.
+ */
+.timeline-item--left.animate-on-scroll {
+  transform: translateX(-40px);
+}
+
+.timeline-item--right.animate-on-scroll {
+  transform: translateX(40px);
+}
+
+/* Visible state — mirrors animations.css .is-visible rule */
+.timeline-item--left.animate-on-scroll.is-visible,
+.timeline-item--right.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Mobile layout (≤768px): single-column, line on left ─── */
+
+@media (max-width: 768px) {
+  /* Move the vertical line to the left edge */
+  .timeline__list::before {
+    left: 18px;
+    transform: none;
+  }
+
+  /* All items go full-width, left-aligned */
+  .timeline-item,
+  .timeline-item--left,
+  .timeline-item--right {
+    width: 100%;
+    align-self: auto;
+    padding-left: calc(var(--space-lg) + 18px);
+    padding-right: 0;
+    text-align: left;
+  }
+
+  /* Dots align to the left line on mobile */
+  .timeline-item--left::after,
+  .timeline-item--right::after {
+    left: 12px;
+    right: auto;
+  }
+
+  /* Reduce slide distance on small screens */
+  .timeline-item--left.animate-on-scroll,
+  .timeline-item--right.animate-on-scroll {
+    transform: translateX(-20px);
+  }
+}
+
+/* ── Extra-small screens (320–375px) ─────────────────────── */
+
+@media (max-width: 375px) {
+  #timeline {
+    padding: var(--space-lg) 0;
+  }
+
+  .timeline__container {
+    width: min(95%, 1100px);
+  }
+
+  /* Tighten padding so content isn't squeezed at 320px */
+  .timeline-item,
+  .timeline-item--left,
+  .timeline-item--right {
+    padding-left: calc(var(--space-md) + 18px);
+  }
+
+  .timeline-item__content {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .timeline-item__title {
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ── Reduced motion override ──────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline-item--left.animate-on-scroll,
+  .timeline-item--right.animate-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .timeline-item__content {
+    transition: none;
+  }
+
+  .timeline-item__content:hover {
+    transform: none;
+  }
+
+  .timeline-item:hover::after {
+    box-shadow: 0 0 8px var(--color-accent-glow);
+  }
+}

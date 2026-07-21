@@ -1,0 +1,64 @@
+/* ============================================================
+   cursor.css — Custom Cursor Styles
+   Only active on pointer-fine (mouse) devices.
+   The JS module adds `.cursor-active` to <body> after the
+   matchMedia guard passes, which enables all cursor overrides.
+   Requirements: 16.1, 16.2, 16.3, 16.4, 16.5
+   ============================================================ */
+
+/* Hide the native cursor only when custom cursor is active */
+body.cursor-active {
+  cursor: none;
+}
+
+/* ── Cursor Dot (follows pointer instantly) ─────────────────── */
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s;
+  opacity: 0;
+}
+
+/* ── Cursor Ring (lags behind via rAF lerp in JS) ───────────── */
+#cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: var(--z-cursor);
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s, transform 0.15s ease, border-color 0.15s;
+  opacity: 0;
+}
+
+/* ── Reveal both elements once cursor-active is set ─────────── */
+.cursor-active #cursor-dot,
+.cursor-active #cursor-ring {
+  opacity: 1;
+}
+
+/* ── Hover state — ring scales up over interactive elements ─── */
+#cursor-ring.cursor-hover {
+  transform: translate(-50%, -50%) scale(1.6);
+  border-color: var(--color-accent-glow);
+}
+
+/* ── Touch / coarse-pointer devices — hide entirely ─────────── */
+@media (pointer: coarse) {
+  #cursor-dot,
+  #cursor-ring {
+    display: none;
+  }
+}

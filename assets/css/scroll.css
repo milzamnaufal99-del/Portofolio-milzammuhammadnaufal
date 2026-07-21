@@ -1,0 +1,86 @@
+/* ============================================================
+   scroll.css — Scroll Progress Bar & Scroll-to-Top Button
+   Requirements: 14.1–14.4, 15.1–15.5, 22.6
+   ============================================================ */
+
+/* ── Scroll Progress Bar ─────────────────────────────────────────────────── */
+
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--color-accent);
+
+  /* Sit one layer above the navbar so it is never obscured */
+  z-index: calc(var(--z-navbar) + 1);
+
+  /* Smooth visual update; will-change lets the browser optimise compositing */
+  transition: width 0.1s linear;
+  will-change: width;
+}
+
+/* ── Scroll-to-Top Button ────────────────────────────────────────────────── */
+
+#scroll-to-top {
+  /* Fixed position — bottom-right corner */
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+
+  /* Hidden by default; made visible via .scroll-to-top--visible */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+
+  /* Glassmorphism pill */
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--border-glass);
+  border-radius: var(--radius-full);
+
+  /* Fixed 44 × 44 px touch target (WCAG 2.5.5) */
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: 1.25rem;
+  line-height: 1;
+
+  /* Match navbar stacking context */
+  z-index: var(--z-navbar);
+}
+
+/* Visible state — toggled by JS */
+#scroll-to-top.scroll-to-top--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Hover / Focus ───────────────────────────────────────────────────────── */
+
+#scroll-to-top:hover {
+  background: var(--color-accent);
+}
+
+/* Keyboard focus: retain accent background + explicit focus ring */
+#scroll-to-top:focus-visible {
+  background: var(--color-accent);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ── @supports fallback for browsers without backdrop-filter ─────────────── */
+
+@supports not (backdrop-filter: blur(1px)) {
+  #scroll-to-top {
+    /* Solid semi-transparent background when blur isn't supported */
+    background: rgba(13, 13, 13, 0.85);
+  }
+}

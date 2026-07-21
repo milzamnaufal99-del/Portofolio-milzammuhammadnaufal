@@ -1,0 +1,154 @@
+/* ============================================================
+   achievements.css — Achievements Section
+   Animated counter blocks displayed in a glassmorphism grid.
+   Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6
+   ============================================================ */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+#achievements {
+  padding: var(--space-xl) var(--space-md);
+  background: var(--color-bg-secondary);
+}
+
+#achievements .achievements__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#achievements .section-title {
+  text-align: center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Achievements grid ────────────────────────────────────── */
+/*
+ * Desktop: up to 5 columns using auto-fill so the grid
+ * gracefully reduces columns when the viewport is narrow.
+ * min(180px, 100%) prevents any single column from forcing
+ * horizontal overflow at narrow breakpoints.
+ */
+.achievements__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr));
+  gap: var(--space-lg);
+  justify-items: center;
+}
+
+/* ── Individual achievement card ──────────────────────────── */
+.achievement {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-lg);
+  border: var(--border-glass);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  transition: transform var(--transition-normal),
+              box-shadow var(--transition-normal);
+  cursor: default;
+  /* Prevent counter text from overflowing the grid cell */
+  min-width: 0;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* Glassmorphism: enhanced background when backdrop-filter is supported */
+@supports (backdrop-filter: blur(1px)) {
+  .achievement {
+    background: var(--glass-bg);
+  }
+}
+
+/* Fallback solid background when backdrop-filter is not supported */
+@supports not (backdrop-filter: blur(1px)) {
+  .achievement {
+    background: rgba(255, 255, 255, 0.07);
+  }
+}
+
+/* Hover lift + glow matching other glassmorphism sections */
+.achievement:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px var(--color-accent-glow);
+}
+
+/* ── Counter number ───────────────────────────────────────── */
+.achievement__counter {
+  display: inline;
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  /* Prevent layout shift while digits change during animation */
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Suffix (e.g. "+") — inline with counter ──────────────── */
+.achievement__suffix {
+  display: inline;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+  margin-left: 1px;
+}
+
+/* Counter + suffix wrapper row */
+.achievement__counter,
+.achievement__suffix {
+  vertical-align: baseline;
+}
+
+/* ── Label paragraph ──────────────────────────────────────── */
+.achievement p {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: var(--space-sm) 0 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── Stagger support via --delay CSS custom property ─────────
+   Delay is set inline by renderer.js and consumed by
+   .animate-on-scroll transition-delay in animations.css.    */
+
+/* ── Responsive: tablet — 3 columns (but grid stays fluid via auto-fill) ── */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .achievements__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  #achievements {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .achievements__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+
+  .achievements__container {
+    padding: 0 var(--space-md);
+  }
+}
+
+/* ── Responsive: small mobile — single column ─────────────── */
+@media (max-width: 400px) {
+  .achievements__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement {
+    padding: var(--space-md) var(--space-md);
+  }
+}

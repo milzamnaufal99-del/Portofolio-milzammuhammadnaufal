@@ -1,0 +1,26 @@
+{
+  "name": "portofolio-milzammuhammadnaufal",
+  "version": "1.0.0",
+  "description": "Personal portfolio website for **Milzam Muhammad Naufal** — Software Developer, IoT Engineer, and AI-Assisted Developer.",
+  "main": "index.js",
+  "scripts": {
+    "test": "vitest --run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/milzamnaufal99-del/Portofolio-milzammuhammadnaufal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/milzamnaufal99-del/Portofolio-milzammuhammadnaufal/issues"
+  },
+  "homepage": "https://github.com/milzamnaufal99-del/Portofolio-milzammuhammadnaufal#readme",
+  "devDependencies": {
+    "fast-check": "^4.9.0",
+    "jsdom": "^29.1.1",
+    "vitest": "^4.1.10"
+  }
+}

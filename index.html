@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Primary Meta Tags -->
+    <title>Milzam Muhammad Naufal — Software Developer Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio of Milzam Muhammad Naufal — Software Developer specializing in web development, IoT engineering, and AI-assisted development. Open to international opportunities."
+    />
+    <link rel="canonical" href="https://milzamnaufal99-del.github.io" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://milzamnaufal99-del.github.io" />
+    <meta property="og:title" content="Milzam Muhammad Naufal — Software Developer Portfolio" />
+    <meta
+      property="og:description"
+      content="Portfolio of Milzam Muhammad Naufal — Software Developer specializing in web development, IoT engineering, and AI-assisted development. Open to international opportunities."
+    />
+    <meta property="og:image" content="https://milzamnaufal99-del.github.io/assets/images/og-image.png" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Milzam Muhammad Naufal — Software Developer Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Milzam Muhammad Naufal — Software Developer specializing in web development, IoT engineering, and AI-assisted development. Open to international opportunities."
+    />
+    <meta name="twitter:image" content="https://milzamnaufal99-del.github.io/assets/images/og-image.png" />
+
+    <!-- Google Fonts — Inter (weights 400, 500, 700) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS Load Order: design tokens → reset → base → above-fold sections → remaining -->
+    <link rel="stylesheet" href="assets/css/variables.css" />
+    <link rel="stylesheet" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/navbar.css" />
+    <link rel="stylesheet" href="assets/css/hero.css" />
+    <link rel="stylesheet" href="assets/css/loading.css" />
+    <link rel="stylesheet" href="assets/css/about.css" />
+    <link rel="stylesheet" href="assets/css/skills.css" />
+    <link rel="stylesheet" href="assets/css/projects.css" />
+    <link rel="stylesheet" href="assets/css/timeline.css" />
+    <link rel="stylesheet" href="assets/css/achievements.css" />
+    <link rel="stylesheet" href="assets/css/certificates.css" />
+    <link rel="stylesheet" href="assets/css/contact.css" />
+    <link rel="stylesheet" href="assets/css/footer.css" />
+    <link rel="stylesheet" href="assets/css/cards.css" />
+    <link rel="stylesheet" href="assets/css/cursor.css" />
+    <link rel="stylesheet" href="assets/css/scroll.css" />
+    <link rel="stylesheet" href="assets/css/animations.css" />
+  </head>
+
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" aria-hidden="true">
+      <div class="loading-screen__content">
+        <p class="loading-screen__name">Milzam Muhammad Naufal</p>
+        <div class="loading-screen__spinner" aria-label="Loading"></div>
+      </div>
+    </div>
+
+    <!-- Custom Cursor (desktop pointer devices only) -->
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div id="scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- Navigation -->
+    <header>
+      <nav id="main-nav" aria-label="Main navigation">
+        <a href="#hero" class="nav__logo" aria-label="Milzam Muhammad Naufal — home">
+          Milzam<span class="nav__logo-accent">.</span>
+        </a>
+
+        <button
+          class="nav__hamburger"
+          id="nav-hamburger"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Toggle navigation menu"
+        >
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+        </button>
+
+        <ul class="nav__menu" id="nav-menu" role="list">
+          <li><a href="#hero"         class="nav__link" data-nav="hero">Home</a></li>
+          <li><a href="#about"        class="nav__link" data-nav="about">About</a></li>
+          <li><a href="#skills"       class="nav__link" data-nav="skills">Skills</a></li>
+          <li><a href="#projects"     class="nav__link" data-nav="projects">Projects</a></li>
+          <li><a href="#timeline"     class="nav__link" data-nav="timeline">Journey</a></li>
+          <li><a href="#achievements" class="nav__link" data-nav="achievements">Achievements</a></li>
+          <li><a href="#certificates" class="nav__link" data-nav="certificates">Certificates</a></li>
+          <li><a href="#contact"      class="nav__link" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Hero Section -->
+      <section id="hero" aria-labelledby="hero-name">
+        <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+        <div class="hero__content animate-on-scroll">
+          <img
+            src="assets/images/avatar.webp"
+            alt="Milzam Muhammad Naufal portrait"
+            width="280"
+            height="280"
+            loading="eager"
+            class="hero__avatar float"
+          />
+
+          <h1 id="hero-name" class="hero__name">Milzam Muhammad Naufal</h1>
+
+          <p class="hero__headline">Software Developer &amp; IoT Engineer</p>
+
+          <p class="hero__subtitle">
+            I'm a <span id="typing-text" aria-live="polite"></span><span class="cursor-blink" aria-hidden="true">|</span>
+          </p>
+
+          <div class="hero__ctas">
+            <a
+              href="assets/milzam-cv.pdf"
+              download
+              class="btn btn--primary"
+              aria-label="Download CV — Milzam Muhammad Naufal"
+            >
+              Download CV
+            </a>
+            <a href="#projects" class="btn btn--ghost">View Projects</a>
+            <a href="#contact"  class="btn btn--outline">Contact Me</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Me Section -->
+      <section id="about" class="about" aria-labelledby="about-heading">
+        <div class="about__container">
+          <div class="about__inner">
+
+            <!-- Portrait column -->
+            <figure class="about__figure">
+              <img
+                src="assets/images/avatar.webp"
+                alt="Milzam Muhammad Naufal portrait"
+                width="400"
+                height="400"
+                loading="lazy"
+                class="about__portrait animate-on-scroll slide-in-left"
+              />
+            </figure>
+
+            <!-- Text column -->
+            <div class="about__content animate-on-scroll">
+              <h2 id="about-heading" class="about__heading">About Me</h2>
+
+              <p class="about__text">
+                I'm a self-driven software developer with a deep passion for building elegant
+                web experiences, practical IoT systems, and AI-assisted development tools.
+                I believe technology is most powerful when it solves real human problems with
+                clarity and craftsmanship.
+              </p>
+              <p class="about__text">
+                My journey spans frontend and full-stack web development, embedded systems
+                engineering with ESP32 and Arduino, and integrating AI tools to accelerate
+                and elevate development workflows. Continuous learning isn't just a habit
+                for me — it's a core value that drives everything I build.
+              </p>
+              <p class="about__text">
+                I'm actively working toward an international career, with a particular goal
+                of contributing to the Japanese technology sector, where engineering
+                discipline, meticulous craftsmanship, and bold innovation converge.
+              </p>
+
+              <ul class="about__tags" aria-label="Professional interests" role="list">
+                <li class="about__tag">Web Development</li>
+                <li class="about__tag">IoT</li>
+                <li class="about__tag">AI Tools</li>
+                <li class="about__tag">Continuous Learning</li>
+                <li class="about__tag">International Career</li>
+                <li class="about__tag">Japanese Tech</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Skills Section -->
+      <section id="skills" aria-labelledby="skills-heading">
+        <div class="skills__container">
+          <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+          <!-- Skills cards are injected here by renderer.js -->
+          <div id="skills-grid" class="skills__grid"></div>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" aria-labelledby="projects-heading">
+        <div class="projects__container">
+          <h2 id="projects-heading" class="section-title">Featured Projects</h2>
+
+          <div class="projects__filters" role="group" aria-label="Filter projects by category">
+            <button class="filter-btn filter-btn--active" data-filter="all"  aria-pressed="true">All</button>
+            <button class="filter-btn" data-filter="web"  aria-pressed="false">Web</button>
+            <button class="filter-btn" data-filter="iot"  aria-pressed="false">IoT</button>
+            <button class="filter-btn" data-filter="tool" aria-pressed="false">Tool</button>
+          </div>
+
+          <!-- Project cards are injected here by renderer.js -->
+          <div id="projects-grid" class="projects__grid"></div>
+        </div>
+      </section>
+
+      <!-- Learning Journey Timeline Section -->
+      <section id="timeline" aria-labelledby="timeline-heading">
+        <div class="timeline__container">
+          <h2 id="timeline-heading" class="section-title">Learning Journey</h2>
+          <!-- Timeline items are injected here by renderer.js -->
+          <div id="timeline-list" class="timeline__list"></div>
+        </div>
+      </section>
+
+      <!-- Achievements Section -->
+      <section id="achievements" aria-labelledby="achievements-heading">
+        <div class="achievements__container">
+          <h2 id="achievements-heading" class="section-title">Achievements</h2>
+          <!-- Achievement counters are injected here by renderer.js -->
+          <div id="achievements-grid" class="achievements__grid"></div>
+        </div>
+      </section>
+
+      <!-- Certificates Section -->
+      <section id="certificates" aria-labelledby="certificates-heading">
+        <div class="certificates__container">
+          <h2 id="certificates-heading" class="section-title">Certificates</h2>
+          <!-- Certificate cards are injected here by renderer.js -->
+          <div id="certificates-grid" class="certificates__grid"></div>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" aria-labelledby="contact-heading" class="animate-on-scroll">
+        <div class="contact__container">
+          <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+
+          <div class="contact__layout">
+            <!-- Contact Form + Success Message column -->
+            <div class="contact__form-col">
+              <form id="contact-form" class="contact__form" novalidate>
+                <div class="form__group">
+                  <label for="name" class="form__label">Full Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form__input"
+                    placeholder="Your full name"
+                    autocomplete="name"
+                    required
+                  />
+                  <span id="name-error" class="field-error" aria-live="polite"></span>
+                </div>
+
+                <div class="form__group">
+                  <label for="email" class="form__label">Email Address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form__input"
+                    placeholder="your@email.com"
+                    autocomplete="email"
+                    required
+                  />
+                  <span id="email-error" class="field-error" aria-live="polite"></span>
+                </div>
+
+                <div class="form__group">
+                  <label for="subject" class="form__label">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    class="form__input"
+                    placeholder="What is this about?"
+                    required
+                  />
+                  <span id="subject-error" class="field-error" aria-live="polite"></span>
+                </div>
+
+                <div class="form__group">
+                  <label for="message" class="form__label">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="form__textarea"
+                    placeholder="Your message…"
+                    rows="5"
+                    required
+                  ></textarea>
+                  <span id="message-error" class="field-error" aria-live="polite"></span>
+                </div>
+
+                <button type="submit" class="btn btn--primary form__submit">Send Message</button>
+              </form>
+
+              <!-- Success Message (hidden by default, shown on valid submit) -->
+              <div class="form__success" aria-live="polite" hidden>
+                <p>&#10003; Thank you! Your message has been received. I'll get back to you soon.</p>
+              </div>
+            </div>
+
+            <!-- Social / Contact Links (injected by renderSocialLinks from main.js) -->
+            <div id="social-links-grid" class="contact__social" aria-label="Direct contact links"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer aria-label="Site footer">
+      <div class="footer__container">
+        <p class="footer__copyright">
+          &copy; <span id="copyright-year"></span> Milzam Muhammad Naufal. All rights reserved.
+        </p>
+
+        <nav aria-label="Footer navigation">
+          <ul class="footer__nav" role="list">
+            <li><a href="#hero"         class="footer__link">Home</a></li>
+            <li><a href="#about"        class="footer__link">About</a></li>
+            <li><a href="#skills"       class="footer__link">Skills</a></li>
+            <li><a href="#projects"     class="footer__link">Projects</a></li>
+            <li><a href="#timeline"     class="footer__link">Journey</a></li>
+            <li><a href="#achievements" class="footer__link">Achievements</a></li>
+            <li><a href="#certificates" class="footer__link">Certificates</a></li>
+            <li><a href="#contact"      class="footer__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Scroll-to-Top Button -->
+    <button id="scroll-to-top" aria-label="Scroll to top">
+      &#8593;
+    </button>
+
+    <!-- JS Entry Point (module, deferred) -->
+    <script type="module" defer src="assets/js/main.js"></script>
+  </body>
+</html>

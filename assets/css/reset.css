@@ -1,0 +1,18 @@
+/* ============================================================
+   reset.css
+   Minimal CSS reset — normalizes box model and strips
+   default browser margin/padding from all elements.
+   ============================================================ */
+
+/* 1. Apply border-box sizing globally, including pseudo-elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin and padding from every element */
+* {
+  margin: 0;
+  padding: 0;
+}

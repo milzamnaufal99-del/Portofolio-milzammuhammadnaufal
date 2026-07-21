@@ -1,0 +1,287 @@
+/* ============================================================
+   contact.css — Contact Section Styles
+   Requirements: 12.1, 12.2, 12.5, 12.7, 18.3, 20.4, 20.7
+   ============================================================ */
+
+/* ── Section container ──────────────────────────────────────── */
+#contact {
+  padding: var(--space-2xl) 0;
+  background: var(--color-bg-secondary);
+}
+
+.contact__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* ── Two-column desktop layout ──────────────────────────────── */
+/* Left: form column  |  Right: social links column            */
+.contact__layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+  margin-top: var(--space-xl);
+}
+
+/* ── Form column wrapper ────────────────────────────────────── */
+.contact__form-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ── Glassmorphism form card ────────────────────────────────── */
+.contact__form {
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .contact__form {
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+}
+
+/* ── Form group ─────────────────────────────────────────────── */
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+/* ── Form label ─────────────────────────────────────────────── */
+.form__label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  user-select: none;
+}
+
+/* ── Form inputs & textarea ─────────────────────────────────── */
+/* Minimum 44px height satisfies WCAG 2.5.5 touch target requirement (req. 20.4) */
+.form__input,
+.form__textarea {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  padding: 0.75rem 1rem;
+  min-height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: rgba(148, 163, 184, 0.5); /* --color-text-secondary at 50% */
+}
+
+/* Focus state: accent-color border + subtle glow */
+.form__input:focus,
+.form__textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+/* Keyboard focus: explicit visible ring (WCAG 2.4.7) */
+.form__input:focus-visible,
+.form__textarea:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Invalid state (populated by JS via aria-describedby) */
+.form__input[aria-describedby],
+.form__textarea[aria-describedby] {
+  border-color: #ef4444; /* red-500 */
+}
+
+.form__textarea {
+  min-height: 140px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ── Inline field error spans ───────────────────────────────── */
+/* Hidden when empty; visible when JS populates them (req. 20.7) */
+.field-error {
+  font-size: var(--font-size-xs);
+  color: #ef4444;
+  min-height: 1em; /* reserve space to prevent layout shift */
+  /* Empty spans are invisible but still in the flow */
+}
+
+.field-error:empty {
+  display: none;
+}
+
+/* ── Submit button ──────────────────────────────────────────── */
+/* Inherits .btn .btn--primary from cards.css; add touch target floor */
+.form__submit {
+  padding: 0.85rem 2rem;
+  min-height: 44px;
+  min-width: 44px;
+  font-size: var(--font-size-base);
+  align-self: flex-start;
+  cursor: pointer;
+}
+
+/* ── Success message ────────────────────────────────────────── */
+/* Hidden by default via the `hidden` HTML attribute.            */
+/* JS removes the attribute on valid submit (req. 12.2)          */
+.form__success {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  text-align: center;
+}
+
+.form__success[hidden] {
+  display: none;
+}
+
+/* ── Social links column ────────────────────────────────────── */
+.contact__social {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  align-content: start;
+}
+
+/* ── Social link items (rendered by renderSocialLinks) ─────── */
+.social-link,
+.social-link--display {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background: var(--glass-bg);
+  border: var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1rem var(--space-lg);
+  min-height: 44px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  transition: border-color var(--transition-fast),
+              background var(--transition-fast),
+              transform var(--transition-fast);
+  /* Prevent text overflow within narrow flex containers */
+  min-width: 0;
+  overflow: hidden;
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .social-link,
+  .social-link--display {
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+}
+
+/* Hover/focus: lift + accent border (only for navigable links) */
+a.social-link:hover,
+a.social-link:focus-visible {
+  border-color: var(--color-accent);
+  background: rgba(59, 130, 246, 0.08);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+a.social-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Display-only (Location) — no hover state, slightly muted */
+.social-link--display {
+  cursor: default;
+  opacity: 0.8;
+}
+
+/* Icon image inside each social link */
+.social-link img,
+.social-link--display img {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  /* Invert dark icons to white for dark theme visibility */
+  filter: invert(1) brightness(0.85);
+}
+
+/* Platform name text */
+.social-link__platform {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.social-link:hover .social-link__platform,
+a.social-link:focus-visible .social-link__platform {
+  color: var(--color-text-primary);
+}
+
+/* ── Responsive: single column on mobile ≤768px ─────────────── */
+@media (max-width: 768px) {
+  #contact {
+    padding: var(--space-xl) 0;
+  }
+
+  .contact__layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .contact__container {
+    padding: 0 var(--space-md);
+  }
+
+  .contact__form {
+    padding: var(--space-lg);
+  }
+
+  /* Stack form column first, social links below */
+  .contact__form-col {
+    order: 1;
+  }
+
+  .contact__social {
+    order: 2;
+  }
+
+  /* Full-width submit button on mobile */
+  .form__submit {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+/* ── Extra-small screens (320–375px) ─────────────────────── */
+@media (max-width: 375px) {
+  .contact__container {
+    padding: 0 var(--space-sm);
+  }
+
+  .contact__form {
+    padding: var(--space-md);
+  }
+}

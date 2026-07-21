@@ -1,0 +1,142 @@
+/* ============================================================
+   Animations — animations.css
+   Keyframe definitions, scroll-reveal classes, utility
+   animation helpers, and reduced-motion overrides.
+   ============================================================ */
+
+/* ── Keyframe Animations ──────────────────────────────────── */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Subtle vertical bob for avatar — infinite alternate */
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+/* Full 360° rotation for loading spinner — infinite linear */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Scroll-Reveal Classes ────────────────────────────────── */
+
+/*
+ * Base hidden state.
+ * The --delay custom property lets JS set a per-element stagger,
+ * e.g. style="--delay: 200ms" on each successive card.
+ */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity   0.5s ease var(--delay, 0ms),
+    transform 0.5s ease var(--delay, 0ms);
+}
+
+/* Directional slide-in variants — override default translateY */
+.animate-on-scroll.slide-left {
+  transform: translateX(-40px);
+}
+
+.animate-on-scroll.slide-right {
+  transform: translateX(40px);
+}
+
+/* Revealed state — added by IntersectionObserver in animations.js */
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+.animate-on-scroll.slide-left.is-visible,
+.animate-on-scroll.slide-right.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Utility Animation Classes ────────────────────────────── */
+
+/* Applied to the hero avatar <img> */
+.float-animation {
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+/* Applied to loading-screen spinner element */
+.spin-animation {
+  animation: spin 1s linear infinite;
+}
+
+/* ── Reduced Motion ───────────────────────────────────────── */
+
+/*
+ * Respect the user's OS-level "reduce motion" preference.
+ * Immediately reveal all scroll-animated elements and disable
+ * decorative animations.
+ */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.slide-left,
+  .animate-on-scroll.slide-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .float-animation {
+    animation: none;
+  }
+
+  .spin-animation {
+    animation: none;
+  }
+}

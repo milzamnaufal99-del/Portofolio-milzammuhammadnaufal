@@ -1,0 +1,199 @@
+/* ============================================================
+   Skills Section — skills.css
+   Layout, category groups, glassmorphism skill cards,
+   hover effects, @supports fallback, and responsive grid.
+
+   Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, 18.3
+   ============================================================ */
+
+/* ── Section Layout ───────────────────────────────────────── */
+
+#skills {
+  padding: var(--space-xl) var(--space-md);
+  background-color: var(--color-bg-secondary);
+}
+
+.skills__container {
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+/* Section heading uses the shared .section-title class from base.css.
+   Override only bottom spacing for this section's layout. */
+#skills .section-title {
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Skill Groups (per category) ──────────────────────────── */
+
+.skills-group {
+  margin-bottom: var(--space-xl);
+}
+
+.skills-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Category heading — h3 level per design spec */
+.skills-group__heading {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-accent);
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  letter-spacing: 0.02em;
+}
+
+/* ── Cards Grid ───────────────────────────────────────────── */
+
+/* Desktop: 3 columns; tablet: 2 columns; mobile: 1 column  */
+.skills-group__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+@media (max-width: 1024px) {
+  .skills-group__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .skills-group__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .skills-group {
+    margin-bottom: var(--space-lg);
+  }
+
+  #skills {
+    padding: var(--space-lg) var(--space-md);
+  }
+}
+
+@media (max-width: 375px) {
+  #skills {
+    padding: var(--space-lg) var(--space-sm);
+  }
+}
+
+/* ── Skill Card — glassmorphism base ──────────────────────── */
+
+/*
+ * Uses CSS variables from variables.css:
+ *   --glass-bg   : rgba(255, 255, 255, 0.04)
+ *   --glass-blur : blur(12px)
+ *   --border-glass: 1px solid rgba(255, 255, 255, 0.08)
+ *
+ * The @supports block below provides a fallback for browsers
+ * that do not support backdrop-filter.
+ */
+.skill-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--border-glass);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+  /* Smooth transition for hover transform + shadow */
+  transition:
+    transform  var(--transition-normal),
+    box-shadow var(--transition-normal);
+
+  /* Ensure card doesn't overflow its grid cell — critical for responsive layout */
+  min-width: 0;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* ── Backdrop-filter fallback ─────────────────────────────── */
+
+/*
+ * Browsers without backdrop-filter support get a more opaque
+ * semi-transparent background so the card remains legible
+ * even without the blur effect.
+ * Requirements: 18.3
+ */
+@supports not (backdrop-filter: blur(1px)) {
+  .skill-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* ── Skill Card Hover ─────────────────────────────────────── */
+
+/*
+ * Pointer devices only — skip on touch where :hover is sticky.
+ * Lift + accent glow as specified in Requirements 7.4.
+ */
+@media (hover: hover) and (pointer: fine) {
+  .skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 16px var(--color-accent-glow);
+  }
+}
+
+/* ── Card Icon ────────────────────────────────────────────── */
+
+.skill-card__icon-wrap {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  margin-bottom: var(--space-xs);
+}
+
+.skill-card__icon-wrap img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  /* Soft filter so plain-colour SVG icons blend with dark theme */
+  filter: drop-shadow(0 0 6px var(--color-accent-glow));
+}
+
+/* ── Card Name ────────────────────────────────────────────── */
+
+.skill-card__name {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.3;
+  margin: 0;
+}
+
+/* ── Card Description ─────────────────────────────────────── */
+
+.skill-card__description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  /* Prevent very long descriptions from inflating card height excessively */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+/* ── Skills grid container (injected by renderer into #skills-grid) ── */
+
+/* The outer #skills-grid div holds all .skills-group elements */
+.skills__grid {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Prevent skill group children from overflowing at narrow viewports */
+.skills-group__grid > * {
+  min-width: 0;
+}

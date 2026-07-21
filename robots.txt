@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://milzamnaufal99-del.github.io/sitemap.xml

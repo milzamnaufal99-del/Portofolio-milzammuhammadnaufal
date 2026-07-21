@@ -1,0 +1,201 @@
+/* ============================================================
+   About Section — about.css
+   Two-column flex layout (image left, text right) on desktop;
+   collapses to single column on mobile.
+   Relies on design tokens from variables.css and scroll-reveal
+   classes defined in animations.css.
+   ============================================================ */
+
+/* ── Section wrapper ──────────────────────────────────────── */
+
+.about {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-bg-secondary);
+}
+
+.about__container {
+  width: min(90%, 1100px);
+  margin-inline: auto;
+}
+
+/* ── Two-column inner layout ──────────────────────────────── */
+
+.about__inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xl);
+}
+
+/* ── Portrait column ──────────────────────────────────────── */
+
+.about__figure {
+  flex: 0 0 auto;
+  margin: 0; /* reset <figure> default margin */
+}
+
+.about__portrait {
+  display: block;
+  max-width: 360px;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 0 32px var(--color-accent-glow);
+  transition:
+    transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.about__portrait:hover {
+  transform: scale(1.03);
+  box-shadow:
+    0 0 0 1px var(--color-border),
+    0 0 48px var(--color-accent-glow);
+}
+
+/* ── Text column ──────────────────────────────────────────── */
+
+.about__content {
+  flex: 1;
+}
+
+.about__heading {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-md);
+  line-height: 1.2;
+}
+
+.about__text {
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-base);
+}
+
+.about__text:last-of-type {
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Interest tags / badges ───────────────────────────────── */
+
+.about__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.about__tag {
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  border: var(--border-glass);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--color-accent);
+  background-color: var(--glass-bg);
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
+  cursor: default;
+}
+
+/* Glassmorphism enhancement where supported */
+@supports (backdrop-filter: blur(1px)) {
+  .about__tag {
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+}
+
+.about__tag:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text-primary);
+  transform: translateY(-2px);
+}
+
+/* ── Scroll-reveal: slide-in-left for portrait ────────────── */
+
+/*
+ * The .animate-on-scroll base class (in animations.css) sets
+ * opacity: 0 + translateY(24px). The .slide-in-left modifier
+ * overrides the transform so the portrait slides from the left.
+ * When IntersectionObserver adds .is-visible the element
+ * transitions to opacity: 1 + transform: none.
+ */
+.animate-on-scroll.slide-in-left {
+  transform: translateX(-30px);
+}
+
+.animate-on-scroll.slide-in-left.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Mobile: single-column layout ────────────────────────── */
+
+@media (max-width: 768px) {
+  .about__inner {
+    flex-direction: column;
+    gap: var(--space-lg);
+    align-items: center;
+    text-align: center;
+  }
+
+  .about__portrait {
+    max-width: 280px;
+  }
+
+  .about__tags {
+    justify-content: center;
+  }
+
+  /* On mobile the slide-in-left still works but reduce distance */
+  .animate-on-scroll.slide-in-left {
+    transform: translateX(-20px);
+  }
+}
+
+/* ── Extra-small screens (320–375px) ─────────────────────── */
+
+@media (max-width: 375px) {
+  .about {
+    padding: var(--space-lg) 0;
+  }
+
+  .about__container {
+    width: min(95%, 1100px);
+  }
+
+  .about__portrait {
+    max-width: 220px;
+  }
+
+  .about__heading {
+    font-size: var(--font-size-lg);
+  }
+}
+
+/* ── Reduced motion override ──────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .about__portrait {
+    transition: none;
+  }
+
+  .about__portrait:hover {
+    transform: none;
+  }
+
+  .about__tag {
+    transition: none;
+  }
+
+  .about__tag:hover {
+    transform: none;
+  }
+}

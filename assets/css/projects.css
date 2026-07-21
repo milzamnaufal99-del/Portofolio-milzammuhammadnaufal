@@ -1,0 +1,138 @@
+/* ============================================================
+   projects.css — Projects Section Styles
+   Requirements: 8.1, 8.2, 8.3, 8.4, 8.5, 8.6, 8.7, 8.8, 18.3
+   ============================================================ */
+
+/* ── Section wrapper ────────────────────────────────────────── */
+#projects {
+  padding: var(--space-xl) 0;
+}
+
+.projects__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* ── Section heading ────────────────────────────────────────── */
+/* Base .section-title styles are defined in base.css.
+   Override only bottom spacing for this section's layout. */
+#projects .section-title {
+  margin-bottom: var(--space-lg);
+}
+
+/* ── Category filter bar ────────────────────────────────────── */
+.projects__filters {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: center;
+  margin-bottom: var(--space-xl);
+}
+
+/* Filter button */
+.filter-btn {
+  /* Pill shape */
+  border-radius: var(--radius-full);
+  padding: 0.5rem 1.25rem;
+  min-height: 44px;
+  min-width: 44px;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family);
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-fast);
+
+  /* Glassmorphism background */
+  background: var(--glass-bg);
+}
+
+@supports (backdrop-filter: blur(1px)) {
+  .filter-btn {
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+  }
+}
+
+.filter-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.filter-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Active / pressed state */
+.filter-btn--active,
+.filter-btn[aria-pressed="true"] {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* ── Projects grid ──────────────────────────────────────────── */
+/*
+ * Use min(320px, 100%) so the column minimum never exceeds the
+ * available container width — prevents horizontal overflow at
+ * narrow viewports like 320px.
+ */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+  gap: var(--space-lg);
+}
+
+/* ── Project card hover lift ────────────────────────────────── */
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px var(--color-accent-glow);
+}
+
+/* ── Hidden state for filtered-out cards ───────────────────── */
+.card--hidden {
+  display: none !important;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+/* Tablet: 2 columns (override auto-fill to ensure exactly 2 cols at mid-size) */
+@media (max-width: 1024px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 768px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects__container {
+    padding: 0 var(--space-md);
+  }
+
+  #projects {
+    padding: var(--space-lg) 0;
+  }
+}
+
+/* Extra-small (320px): ensure no overflow */
+@media (max-width: 375px) {
+  .projects__container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* ── Empty state ─────────────────────────────────────────────── */
+#projects .empty-state {
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  padding: var(--space-xl) 0;
+  grid-column: 1 / -1;
+}
