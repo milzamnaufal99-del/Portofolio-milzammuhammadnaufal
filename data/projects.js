@@ -12,17 +12,7 @@
 
 /** @type {ProjectEntry[]} */
 export const projects = [
-  {
-    id: "smart-home-monitor",
-    title: "Smart Home Monitor",
-    description:
-      "An IoT dashboard that collects real-time temperature, humidity, and motion data from ESP32 sensors and displays live readings on a web interface. Data is pushed via MQTT and visualised with dynamic charts.",
-    techStack: ["ESP32", "MicroPython", "MQTT", "HTML", "CSS", "JavaScript"],
-    category: "iot",
-    githubUrl: "https://github.com/milzamnaufal99-del/smart-home-monitor",
-    liveDemoUrl: null,
-    imagePath: "assets/images/projects/smart-home-monitor.webp",
-  },
+
   {
     id: "personal-portfolio",
     title: "Personal Portfolio Website",
@@ -33,6 +23,25 @@ export const projects = [
     githubUrl: "https://github.com/milzamnaufal99-del/portfolio",
     liveDemoUrl: null,
     imagePath: "assets/images/projects/portfolio-home.webp",
+  },
+  {
+    id: "visitor-counter-iot",
+    title: "IOT Visitor Counter System",
+    description:
+      "An IoT-based visitor counting system built using ESP8266 (Wemos D1 Mini), dual PIR sensors, LCD I2C display, DFPlayer Mini, and a web dashboard. The system automatically counts visitors entering and leaving a room, displays occupancy in real time, and supports future cloud integration for remote monitoring.",
+   techStack: [
+    "ESP8266",
+    "Arduino IDE",
+    "C++",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "IoT"
+  ],
+    category: "iot",
+    githubUrl: null,
+    liveDemoUrl: null,
+    imagePath: "assets/images/projects/visitor-counter.webp",
   },
   {
     id: "esp8266-weather-station",
