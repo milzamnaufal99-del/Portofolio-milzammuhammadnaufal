@@ -32,7 +32,7 @@ export const projects = [
     category: "web",
     githubUrl: "https://github.com/milzamnaufal99-del/portfolio",
     liveDemoUrl: null,
-    imagePath: "assets/images/projects/personal-portfolio.webp",
+    imagePath: "assets/images/projects/portfolio-home.webp",
   },
   {
     id: "esp8266-weather-station",
