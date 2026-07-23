@@ -57,5 +57,20 @@ category: "web",
 githubUrl: "https://github.com/milzamnaufal99-del/CodingCamp-6July26-milzammuhammadnaufal",
 liveDemoUrl: "https://milzamnaufal99-del.github.io/CodingCamp-6July26-milzammuhammadnaufal/",
 imagePath: "assets/images/projects/budget-tracker.webp"
+},
+{
+    id: "sakura-tracker",
+    title: "Sakura Tracker",
+    description:
+    "A personal Japanese learning tracker designed to monitor daily study progress. The website helps organize vocabulary, grammar, kanji, and daily learning streaks while keeping study goals consistent through a clean and responsive interface.",
+    techStack: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+],
+category: "web",
+githubUrl: "https://github.com/milzamnaufal99-del/Sakura-Tracker-milzam-muhammad-naufal",
+liveDemoUrl: "https://milzamnaufal99-del.github.io/Sakura-Tracker-milzam-muhammad-naufal/",
+imagePath: "assets/images/projects/sakura-tracker.webp"
 }
 ];
