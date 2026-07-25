@@ -23,7 +23,7 @@ export const timelineEvents = [
     year: "2025",
     title: "Focused on Front-End Development",
     description:
-      "Started taking web development more seriously by improving my front-end development skills through independent learning and personal projects. During the same year, I was accepted for an internship (PKL) at PT Lintasarta Sukabumi, where I gained valuable experience in a professional working environment and strengthened my technical and teamwork skills.",
+      "Started taking web development more seriously by improving my front-end development skills through independent learning and personal projects. During the same year, I was accepted for an internship (PKL) at PT Lintasarta Sukabumi as a technician, where I gained valuable experience in a professional working environment and strengthened my technical and teamwork skills.",
   },
   {
     year: "2026",
