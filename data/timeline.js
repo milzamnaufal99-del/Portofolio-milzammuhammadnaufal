@@ -8,39 +8,33 @@
 /** @type {TimelineEvent[]} */
 export const timelineEvents = [
   {
-    year: "2021",
-    title: "Started Learning Programming",
-    description:
-      "Took my first steps into the world of software development by exploring HTML, CSS, and the fundamentals of JavaScript. What began as curiosity quickly grew into a genuine passion — I spent countless evenings following tutorials, breaking things, and learning why they broke.",
-  },
-  {
-    year: "2022",
-    title: "Built Mini Projects",
-    description:
-      "Moved from tutorials to hands-on practice by building real mini projects: a personal expense tracker, a simple to-do app, and my first ESP8266-based weather station. Each project taught me how to translate ideas into working code and introduced me to debugging, version control with Git, and the satisfaction of shipping something tangible.",
-  },
-  {
     year: "2023",
-    title: "Learning AI Development",
+    title: "Started Vocational School",
     description:
-      "Began exploring AI-assisted development workflows, learning how to leverage large language models for code review, documentation generation, and accelerating problem solving. Developed a practical understanding of prompt engineering that I now apply daily to write better code faster and tackle unfamiliar domains with greater confidence.",
-  },
-  {
-    year: "2023",
-    title: "Learning Japanese",
-    description:
-      "Started studying Japanese with a long-term goal of working in the Japanese technology sector. Committed to daily vocabulary practice, grammar study, and reading technical documentation in Japanese. This journey deepened my appreciation for precision in communication — a discipline that directly improved the clarity of my code and documentation.",
+      "Started my journey at SMKN 1 Cimahi, majoring in Communication Electronics Engineering. During this period, I built a strong foundation in electronics, networking, and embedded systems while developing problem-solving skills through practical projects.",
   },
   {
     year: "2024",
-    title: "Building Portfolio",
+    title: "Discovered Web Development",
     description:
-      "Consolidated everything I had learned into this production-ready portfolio — a zero-dependency, fully accessible, data-driven single-page application built with vanilla HTML, CSS, and JavaScript. The project challenged me to apply performance optimisation, semantic accessibility, responsive design, and property-based testing all at once, raising my professional bar significantly.",
+      "Began learning the fundamentals of web development through school lessons, exploring HTML, CSS, and JavaScript. Building simple websites sparked my interest in creating interactive and user-friendly web applications.",
   },
   {
     year: "2025",
-    title: "Future Software Engineer",
+    title: "Focused on Front-End Development",
     description:
-      "The journey continues. My goal is to secure a position as a software engineer at an international company — ideally in Japan — where I can contribute to meaningful products, grow within a collaborative engineering culture, and keep pushing the boundary between web development, IoT systems, and AI-assisted tooling.",
+      "Started taking web development more seriously by improving my front-end development skills through independent learning and personal projects. During the same year, I was accepted for an internship (PKL) at PT Lintasarta Sukabumi, where I gained valuable experience in a professional working environment and strengthened my technical and teamwork skills.",
+  },
+  {
+    year: "2026",
+    title: "Building My Portfolio & Career Preparation",
+    description:
+      "Graduated from vocational school and began building a professional portfolio to showcase my projects and technical skills. At the same time, I started learning personal financial management while preparing for an international career by studying Japanese and improving my English communication skills.",
+  },
+  {
+    year: "Future",
+    title: "Career in Japan",
+    description:
+      "My long-term goal is to build a career as a Web Developer while continuously expanding my expertise in IoT and modern web technologies. I aspire to work in Japan, contribute to international projects, and keep growing as a software professional through continuous learning and real-world experience.",
   },
 ];
