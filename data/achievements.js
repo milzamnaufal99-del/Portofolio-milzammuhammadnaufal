@@ -10,7 +10,7 @@
 export const achievements = [
   {
     label: "Projects",
-    targetValue: 6,
+    targetValue: 4,
     suffix: "+",
     duration: 1500,
   },
@@ -22,19 +22,19 @@ export const achievements = [
   },
   {
     label: "Learning Hours",
-    targetValue: 500,
+    targetValue: 800,
     suffix: "+",
     duration: 2200,
   },
   {
     label: "GitHub Repositories",
-    targetValue: 12,
+    targetValue: 3,
     suffix: "+",
     duration: 1600,
   },
   {
     label: "Certificates",
-    targetValue: 7,
+    targetValue: 4,
     suffix: "+",
     duration: 1400,
   },
