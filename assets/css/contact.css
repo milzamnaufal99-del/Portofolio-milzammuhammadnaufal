@@ -285,3 +285,15 @@ a.social-link:focus-visible .social-link__platform {
     padding: var(--space-md);
   }
 }
+
+/* ── sosial contact ─────────────────────── */
+.social-link__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.social-link__detail {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-top: 2px;
+}

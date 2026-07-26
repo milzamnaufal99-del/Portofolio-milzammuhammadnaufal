@@ -30,7 +30,7 @@ export const socialLinks = [
   // e.g. if your profile URL is https://www.linkedin.com/in/john-doe-123 → slug is "john-doe-123"
   {
     platform: "LinkedIn",
-    url: "linkedin.com/in/milzam-muhammad-naufal-345a2b418",
+    url: "https://www.linkedin.com/in/milzam-muhammad-naufal-345a2b418",
     iconPath: "assets/icons/linkedin.svg",
     label: "Connect with Milzam on LinkedIn",
   },
@@ -50,9 +50,9 @@ export const socialLinks = [
   // url is an empty string — the renderer should treat this entry as display-only
   // and NOT wrap it in an <a> element.
   {
-  platform: "Location",
+  platform: "Based in",
   url: "",
-  iconPath: "assets/icons/location.svg",
+  iconPath: "assets/icons/based-in.svg",
   label: "Cimahi, West Java, Indonesia",
 },
 ];

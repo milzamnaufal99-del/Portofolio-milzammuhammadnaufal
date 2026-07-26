@@ -456,12 +456,24 @@ export function renderSocialLinks(links, container) {
     img.width = 24;
     img.height = 24;
 
-    const platformName = document.createElement('span');
-    platformName.className = 'social-link__platform';
-    platformName.textContent = link.platform || '';
+    const textWrap = document.createElement('div');
+textWrap.className = 'social-link__text';
 
-    item.appendChild(img);
-    item.appendChild(platformName);
+const platformName = document.createElement('span');
+platformName.className = 'social-link__platform';
+platformName.textContent = link.platform || '';
+
+textWrap.appendChild(platformName);
+
+if (!link.url && link.label) {
+  const detail = document.createElement('small');
+  detail.className = 'social-link__detail';
+  detail.textContent = link.label;
+  textWrap.appendChild(detail);
+}
+
+item.appendChild(img);
+item.appendChild(textWrap);
     fragment.appendChild(item);
   });
 
